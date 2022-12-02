@@ -51,7 +51,7 @@ def rockpaperscissors(data):
     return score
 
 
-# with open("test02.txt") as file:
+# with open("test_data/test02.txt") as file:
 #     test_data = file.read()
 #     print(rockpaperscissors(test_data))
 
@@ -100,7 +100,7 @@ def rockpaperscissors_2(data):
                 score += points_for_chosen_2['Paper']
     return score
 
-# with open("test02.txt") as file:
+# with open("test_data/test02.txt") as file:
 #     test_data = file.read()
 #     print(rockpaperscissors_2(test_data))
 

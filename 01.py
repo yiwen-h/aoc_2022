@@ -13,7 +13,7 @@ def count_calories(data):
     return max(totals)
 
 
-# with open("test01.txt") as file:
+# with open("test_data/test01.txt") as file:
 #     test_data = file.read()
 #     print(count_calories(test_data))
 
