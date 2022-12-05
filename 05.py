@@ -30,7 +30,7 @@ def supplystacks(data):
             stack_maps[instr_split[1]].pop()
     answer = ''
     for s in stack_maps:
-        if stack_maps[s] is not None:
+        if stack_maps[s]:
             answer += stack_maps[s][-1]
     return answer
 
