@@ -12,7 +12,6 @@ def spacecheck(data):
         if data_split[i].startswith('$ cd '):
             if data_split[i][5:] == '..':
                 dirname = '-'.join(dirname.split('-')[:-1])
-                dirs.setdefault(dirname, [i])
             else:
                 dirname = dirname + '-' + data_split[i][5:]
                 dirs.setdefault(dirname, [i])
@@ -62,7 +61,6 @@ def spacecheck_2(data):
         if data_split[i].startswith('$ cd '):
             if data_split[i][5:] == '..':
                 dirname = '-'.join(dirname.split('-')[:-1])
-                dirs.setdefault(dirname, [i])
             else:
                 dirname = dirname + '-' + data_split[i][5:]
                 dirs.setdefault(dirname, [i])
