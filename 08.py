@@ -13,6 +13,7 @@ def treetop(data):
             forest[line][each] = int(data_split[line][each])
     #outer trees are all visible
     tree_count = 2* len(data_split) + 2* (len(data_split)-2)
+    #compare each tree not in outer lanes
     for line in range(1,len(data_split)-1):
         for col in range(1,len(data_split)-1):
             #check all above
@@ -31,7 +32,49 @@ def treetop(data):
 
 
 def treetop_2(data):
-    pass
+    #make numpy grid of trees
+    data_split = data.split('\n')[:-1]
+    forest = np.zeros((len(data_split[0]),len(data_split)))
+    for line in range(len(data_split)):
+        for each in range(len(data_split[0])):
+            forest[line][each] = int(data_split[line][each])
+    #compare each tree not in outer lanes
+    max_score = 0
+    for line in range(1,len(data_split)-1):
+        for col in range(1,len(data_split)-1):
+            distances = {'up': 0, 'down': 0, 'left':0, 'right':0}
+        # check up
+            for i in range(1,line+1):
+                if forest[line][col] > forest[line-i, col]:
+                    distances['up'] += 1
+                else:
+                    distances['up'] += 1
+                    break
+            #check down
+            for i in range(1,len(data_split)-line):
+                if forest[line][col] > forest[line+i, col]:
+                    distances['down'] += 1
+                else:
+                    distances['down'] += 1
+                    break
+            #check left
+            for i in range(1,col+1):
+                if forest[line][col] > forest[line, col-i]:
+                    distances['left'] += 1
+                else:
+                    distances['left'] += 1
+                    break
+            #check right
+            for i in range(1,len(data_split)-col):
+                if forest[line][col] > forest[line, col+i]:
+                    distances['right'] += 1
+                else:
+                    distances['right'] += 1
+                    break
+            score = np.prod(list(distances.values()))
+            if score > max_score:
+                max_score = score
+    return max_score
 
 with open("test_data/test08.txt") as file:
     test_data = file.read()
@@ -39,8 +82,8 @@ with open("test_data/test08.txt") as file:
 
 print(f'part 1 solution = {treetop(raw_data)}')
 
-with open("test_data/test07.txt") as file:
+with open("test_data/test08.txt") as file:
     test_data = file.read()
     print(treetop_2(test_data))
 
-# print(f'part 2 solution = {treetop_2(raw_data)}')
+print(f'part 2 solution = {treetop_2(raw_data)}')
