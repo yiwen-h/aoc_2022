@@ -60,6 +60,10 @@ def rope(data):
     return len(set(t_locations_tups))
 
 def rope_2(data):
+    """
+    to do: make separate lists with locations for each knot
+    update tail based just on knot 9
+    """
     instructions = data.split('\n')[:-1]
     t_locations = [[0,0]]
     h_location = [0,0]
